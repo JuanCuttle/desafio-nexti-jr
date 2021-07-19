@@ -1,4 +1,4 @@
-package com.example.produto;
+package com.example.pedido;
 
 import java.util.List;
 
@@ -15,36 +15,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path="api/v1/produto")
-public class ProdutoController {
+@RequestMapping(path="api/v1/pedido")
+public class PedidoController {
 
-	private final ProdutoService produtoService;
+	private final PedidoService pedidoService;
 	
 	@Autowired
-	public ProdutoController(ProdutoService produtoService) {
-		this.produtoService = produtoService;
+	public PedidoController(PedidoService pedidoService) {
+		this.pedidoService = pedidoService;
 	}
 
 
 	@GetMapping
-	public List<Produto> getProdutos() {
-		return produtoService.getProdutos();
+	public List<Pedido> getPedidos() {
+		return pedidoService.getPedidos();
 	}
 	
 	@PostMapping
-	public void postProduto(@RequestBody Produto p) {
-		produtoService.postProduto(p);
+	public void postPedido(@RequestBody Pedido p) {
+		pedidoService.postPedido(p);
 	}
 	
-	@DeleteMapping (path="{produtoId}")
-	public void deleteProduto(@PathVariable("produtoId") Long id) {
-		produtoService.deleteProduto(id);
+	@DeleteMapping (path="{pedidoId}")
+	public void deletePedido(@PathVariable("pedidoId") Long id) {
+		pedidoService.deletePedido(id);
 	}
 	
 	@PutMapping
 	@Transactional
-	public void updateProduto(
-			@RequestBody Produto p) {
-		produtoService.updateProduto(p);
+	public void updatePedido(
+			@RequestBody Pedido p) {
+		pedidoService.updatePedido(p);
 	}
 }

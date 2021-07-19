@@ -46,12 +46,12 @@ public class ProdutoService {
 		}
 	}
 
-	public void updateProduto(Long id, String nome, String descricao, int preco, int quantidade) {
-		Produto p = produtoRepository.findById(id).orElseThrow(() -> new IllegalStateException("Produto com id "+id+" não existe!"));
+	public void updateProduto(Produto p) {
+		Produto pRep = produtoRepository.findById(p.getId()).orElseThrow(() -> new IllegalStateException("Produto com id "+p.getId()+" não existe!"));
 
-		p.setNome(nome);
-		p.setDescricao(descricao);
-		p.setPreco(preco);
-		p.setQuantidade(quantidade);
+		pRep.setNome(p.getNome());
+		pRep.setDescricao(p.getDescricao());
+		pRep.setPreco(p.getPreco());
+		pRep.setQuantidade(p.getQuantidade());
 	}
 }

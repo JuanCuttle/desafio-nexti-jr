@@ -1,6 +1,5 @@
 package com.example.cliente;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,12 +40,10 @@ public class ClienteService {
 		}
 	}
 
-	public void updateCliente(Long id, String nome, String dob) {
-		Cliente c = clienteRepository.findById(id).orElseThrow(() -> new IllegalStateException("Cliente com id "+id+" não existe!"));
+	public void updateCliente(Cliente c) {
+		Cliente cRep = clienteRepository.findById(c.getId()).orElseThrow(() -> new IllegalStateException("Cliente com id "+c.getId()+" não existe!"));
 		
-		c.setNome(nome);
-		if (dob != null) {
-			c.setDataDeNascimento(LocalDate.parse(dob));
-		}
+		cRep.setNome(c.getNome());
+		cRep.setDataDeNascimento(c.getDataDeNascimento());
 	}
 }
