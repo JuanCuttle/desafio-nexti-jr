@@ -1,14 +1,3 @@
-## Modo de execução
-
-1. Clonar este repositório na máquina local
-2. Localizar o arquivo src/main/resources/application.properties
-3. Fazer as devidas modificações na URL, username e password para conectar ao banco de dados local
-4. Inicializar o bando de dados a ser utilizado
-5. Localizar o arquivo src/main/java/com/example/Application.java
-6. Executar o arquivo mencionado em "5" como Spring Boot App
-7. Abrir o navegador em "localhost:8080/api/v1/clientes" ou "localhost:8080/api/v1/produtos" ou "localhost:8080/api/v1/pedidos"
-7.1 Alternativamente, utilizar um software como Postman para testar as requisições
-
 ## Developer JR
 
 Parabéns, você passou para a segunda fase do processo seletivo da NEXTI para desenvolvedor JR (Java + Angular).
