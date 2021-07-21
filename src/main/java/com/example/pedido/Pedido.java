@@ -33,6 +33,7 @@ public class Pedido {
 	public Pedido() {
 	}
 
+	// Construtor com todos os campos para testes
 	public Pedido(long id, long idCliente, int totalDaCompra, LocalDate dataDaCompra, ArrayList<Long> produtos) {
 		this.id = id;
 		this.idCliente = idCliente;
@@ -41,6 +42,7 @@ public class Pedido {
 		this.produtos = produtos;
 	}
 
+	// Construtor sem Id para geracao automatica pelo banco de dados
 	public Pedido(long idCliente, int totalDaCompra, LocalDate dataDaCompra, ArrayList<Long> produtos) {
 		this.idCliente = idCliente;
 		this.totalDaCompra = totalDaCompra;

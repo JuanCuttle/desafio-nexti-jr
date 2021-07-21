@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+// Classe para montar bancos de dados dummy para testes
 @Configuration
 public class ClienteConfig {
 

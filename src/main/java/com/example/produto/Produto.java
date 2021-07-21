@@ -30,6 +30,7 @@ public class Produto {
 	public Produto() {
 	}
 
+	// Construtor com todos os campos para testes
 	public Produto(long id, String nome, String descricao, int preco, int quantidade) {
 		this.id = id;
 		this.nome = nome;
@@ -38,6 +39,7 @@ public class Produto {
 		this.quantidade = quantidade;
 	}
 
+	// Construtor sem Id para geracao automatica pelo banco de dados
 	public Produto(String nome, String descricao, int preco, int quantidade) {
 		this.nome = nome;
 		this.descricao = descricao;

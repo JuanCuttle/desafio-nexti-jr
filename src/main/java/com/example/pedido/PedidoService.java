@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 import com.example.cliente.ClienteRepository;
 import com.example.produto.ProdutoRepository;
 
+//Classe que executara as requisicoes sobre pedidos dos usuarios
 @Service
 public class PedidoService {
 
+	// Referencias as tabelas do banco de dados
 	private final PedidoRepository pedidoRepository;
 	private final ProdutoRepository produtoRepository;
 	private final ClienteRepository clienteRepository;
@@ -25,10 +27,15 @@ public class PedidoService {
 		this.clienteRepository = clienteRepository;
 	}
 
+	// Metodo GET. Retorna uma lista com todos os pedidos
 	public List<Pedido> getPedidos() {
 		return pedidoRepository.findAll();
 	}
 
+	// Metodo POST. Verifica se o pedido ja esta registrado no banco de dados. Caso afirmativo
+	// lanca um erro, caso negativo verifica se o cliente referenciado no pedido esta cadastrado. Caso
+	// negativo lanca um erro, caso afirmativo verifica o mesmo para os produtos referenciados no pedido.
+	// Caso o cliente e os produtos ja estejam todos registrados no banco de dados, salva o novo pedido
 	public void postPedido(Pedido p) {
 		Optional<Pedido> pedidoById = pedidoRepository.findById(p.getId());
 		if (pedidoById.isPresent()) {
@@ -52,6 +59,7 @@ public class PedidoService {
 
 	}
 
+	// Metodo DELETE. Caso o pedido solicitado nao exista, lanca um erro. Caso contrario, o exclui
 	public void deletePedido(Long id) {
 		
 		boolean pedidoExists = pedidoRepository.existsById(id);
@@ -62,21 +70,33 @@ public class PedidoService {
 		}
 	}
 
+	// Metodo PUT (atualizar). Caso o pedido solicitado nao esteja cadastrado, lanca um erro.
+	// Caso contrario, verifica se o cliente novo esta cadastrado. Caso nao esteja lanca um erro.
+	// Caso esteja, verifica se os ids dos produtos no pedido atualizado ja estao
+	// no banco de dados. Caso algum nao esteja, lanca um erro. Caso todos estejam,
+	// atualiza o id do cliente, o valor total da compra, a data da compra e as
+	// referencias dos produtos associados ao pedido
 	public void updatePedido(Pedido p) {
 		Pedido pRep = pedidoRepository.findById(p.getId()).orElseThrow(() -> new IllegalStateException("Pedido com id "+p.getId()+" não existe!"));
 
-		pRep.setIdCliente(p.getIdCliente());
-		pRep.setTotalDaCompra(p.getTotalDaCompra());
-		pRep.setDataDaCompra(p.getDataDaCompra());
+		Long idCliente = p.getIdCliente();
+		boolean clienteExiste = clienteRepository.existsById(idCliente);
+		
+		if (!clienteExiste) {
+			throw new IllegalStateException("Cliente com id "+idCliente+" não existe!");
+		}
 		
 		ArrayList<Long> idProdutos = p.getProdutos();
 		for (int i = 0; i < idProdutos.size();  i++) {
 			Long idProduto = idProdutos.get(i);
-			System.out.println(idProduto);
 			if (!produtoRepository.existsById(idProduto)) {
 				throw new IllegalStateException("Produto com id "+idProduto+" não existe!");
 			}
 		}
+		
+		pRep.setIdCliente(p.getIdCliente());
+		pRep.setTotalDaCompra(p.getTotalDaCompra());
+		pRep.setDataDaCompra(p.getDataDaCompra());
 		pRep.setProdutos(p.getProdutos());
 	}
 }

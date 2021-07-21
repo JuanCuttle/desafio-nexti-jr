@@ -31,6 +31,7 @@ public class Cliente {
 	public Cliente() {
 	}
 
+	// Construtor com todos os campos para testes
 	public Cliente(long id,
 			String nome,
 			String cpf,
@@ -41,6 +42,7 @@ public class Cliente {
 		this.dataDeNascimento = dataDeNascimento;
 	}
 
+	// Construtor sem Id para geracao automatica pelo banco de dados
 	public Cliente(String nome,
 			String cpf,
 			LocalDate dataDeNascimento) {
