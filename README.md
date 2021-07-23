@@ -1,3 +1,7 @@
+# Desafio-nexti-jr
+
+Desenvolvido com SpringBoot e MySQL no backend, e Angular.js no frontend.
+
 ## Modo de execução
 
 1. Clonar este repositório na máquina local
@@ -8,6 +12,18 @@
 6. Executar o arquivo mencionado em "5" como Spring Boot App
 7. Abrir o navegador em "localhost:8080/api/v1/clientes" ou "localhost:8080/api/v1/produtos" ou "localhost:8080/api/v1/pedidos"
 7.1 Alternativamente, utilizar um software como Postman para testar as requisições
+
+# Requisicoes
+
+A API pode ser acessada no endereco http://localhost:8080/api/v1/
+Cada tabela pode ser acessada no endereço específico. No caso:
+Clientes: http://localhost:8080/api/v1/clientes
+Produtos: http://localhost:8080/api/v1/produtos
+Pedidos: http://localhost:8080/api/v1/pedidos
+
+GET: acessar os endereços mencionados acima.
+POST/PUT: enviar o JSON do novo objeto para os mesmos endereços de GET.
+DELETE: enviar o id do objeto a deletar ao final do endereço. Ex.: Caso queira deletar o pedido 2, enviar HTTP DELETE para http://localhost:8080/api/v1/pedidos/2 
 
 ## Developer JR
 

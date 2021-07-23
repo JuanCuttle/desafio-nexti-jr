@@ -1,7 +1,6 @@
 package com.example.cliente;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,8 +30,7 @@ public class ClienteController {
 
 	// Local onde inicia-se o processamento das requisicoes GET
 	@GetMapping
-	public List<Cliente> getClientes(@RequestHeader Map<String, String> mapValues) {
-		System.out.println(mapValues);
+	public List<Cliente> getClientes(/*@RequestHeader Map<String, String> mapValues*/) {
 		return clienteService.getClientes();
 	}
 	
